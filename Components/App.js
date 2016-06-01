@@ -3,9 +3,10 @@ import {
   View,
   Text,
   TabBarIOS,
-  StyleSheet
+  StyleSheet,
+  StatusBar
 } from 'react-native';
-import Top250 from './Top250';
+import Top250Nav from './Top250Nav';
 import InTheater from './InTheater';
 import Coming from './Coming';
 import Favorites from './Favorites';
@@ -14,17 +15,17 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      selectedTab : 'top250',
-      barTranslucent: true
-
+      selectedTab : 'top250'
     }
   }
+
 	render() {
 		return (
 			<TabBarIOS
+        style={{backgroundColor: '#F5FCFF'}}
         tintColor="white"
         barTintColor="midnightblue"
-        translucent={this.state.barTranslucent}>
+        translucent={true}>
         <TabBarIOS.Item icon={require('../image/popular.png')} title="Top 250"
           selected={this.state.selectedTab === 'top250'}
           onPress={() => {
@@ -33,7 +34,7 @@ export default class App extends Component {
             });
           }}
         >
-          <Top250></Top250>
+          <Top250Nav></Top250Nav>
         </TabBarIOS.Item>
         <TabBarIOS.Item icon={require('../image/theater.png')} title="In theater"
             selected={this.state.selectedTab === 'inTheater'}
@@ -68,8 +69,3 @@ export default class App extends Component {
       )
 	}
 }	
-
-const styles = StyleSheet.create({
-
-
-});
