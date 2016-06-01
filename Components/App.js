@@ -8,6 +8,7 @@ import {
 import Top250 from './Top250';
 import InTheater from './InTheater';
 import Coming from './Coming';
+import Favorites from './Favorites';
 
 export default class App extends Component {
   constructor(props){
@@ -52,6 +53,16 @@ export default class App extends Component {
             }}
         >
           <Coming></Coming>
+        </TabBarIOS.Item>
+        <TabBarIOS.Item systemIcon='favorites'
+          selected={this.state.selectedTab === 'favorites'}
+            onPress={() => {
+              this.setState({
+                selectedTab: 'favorites',
+              });
+            }}
+        >
+          <Favorites></Favorites>
         </TabBarIOS.Item>
       </TabBarIOS>
       )
