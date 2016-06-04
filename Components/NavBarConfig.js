@@ -10,10 +10,17 @@ export function titleConfig(title) {
 };
 export function backConfig(navigator) {
 	return {
-		title: '← back',
+		title: 'back',
 		tintColor: 'white',
 		handler: function(){
 			navigator.pop();
 		}
+	}
+}
+export function rightConfig(title, callback) {
+	return {
+		title: title,
+		tintColor: 'white',
+		handler: callback
 	}
 }

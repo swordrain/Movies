@@ -39,7 +39,7 @@ export default class MovieList extends Component {
 						{movie.title}
 						</Text>
 						<Text style={styles.movieOriginalTitle}>
-							{movie.original_title}
+						{movie.original_title}
 						</Text>
 						 <Text style={styles.movieYear}>{movie.year}</Text>
 					</View>
@@ -64,19 +64,19 @@ export default class MovieList extends Component {
 	render() {
 		var content;
 		if(this.state.dataSource.getRowCount() === 0){
-			content = <ActivityIndicatorIOS size='large'/>;
+			return (<View style={styles.indicatorContainer}>
+				<ActivityIndicatorIOS size='large'/>
+			</View>);
 		} else{
-			content = 
-				
-				(<ListView style={styles.listView}
+			//content = 
+					
+				return (<ListView style={styles.listView}
 					dataSource={this.state.dataSource}
       				renderRow={this._renderRow.bind(this)}
-      				
+      				onEndReached={this.props.loadMore}
+      				onEndReachedThreshold={-20}
 				/>)
 		}
-		return (<View style={styles.movieList}>
-				{content}
-				</View>) ;
 	}
 }
 
@@ -85,7 +85,7 @@ let styles = StyleSheet.create({
 		borderBottomWidth:1,
 		borderBottomColor: 'gray'
 	},
-	movieList: {
+	indicatorContainer: {
 		flex: 1,
     	backgroundColor: '#F5FCFF',
     	marginBottom: 50,
@@ -94,13 +94,15 @@ let styles = StyleSheet.create({
 	},
 	listView: {
 		flex: 1,
+		marginBottom: 50,
 	},
 	rowView: {
 		height: 110, 
 		flexDirection: 'row', 
 		alignItems:'center',
 		borderBottomWidth:1,
-		borderBottomColor: 'gray'
+		borderBottomColor: 'gray',
+		//flex: 1,
 	},
 	movieImage: {
 		width: 70, 
@@ -117,10 +119,11 @@ let styles = StyleSheet.create({
 		fontSize: 16
 	},
 	movieTitle: {
-		fontSize: 16
+		fontSize: 16,
+		fontWeight: 'bold',
 	},
 	movieOriginalTitle: {
-		fontSize: 14
+		fontSize: 14,
 	},
 	movieYear: {
 		fontSize: 12

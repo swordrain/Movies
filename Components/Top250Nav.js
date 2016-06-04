@@ -10,6 +10,7 @@ import {
 
 import Top250List from './Top250List';
 import MovieDetail from './MovieDetail';
+import MovieDetailWeb from './MovieDetailWeb';
 
 /*var NavigationBarRouteMapper = {
   LeftButton(route, navigator, index, nextState) {
@@ -36,6 +37,8 @@ export default class Top250Nav extends Component{
 				return <Top250List navigator={navigator}/>;
 			case 'Detail':
 				return <MovieDetail navigator={navigator} {...route}/>
+			case 'DetailWeb':
+				return <MovieDetailWeb navigator={navigator} {...route} />
 		}
 	}
 

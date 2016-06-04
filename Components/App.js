@@ -9,7 +9,7 @@ import {
 import Top250Nav from './Top250Nav';
 import InTheater from './InTheater';
 import Coming from './Coming';
-import Favorites from './Favorites';
+import Search from './Search';
 
 export default class App extends Component {
   constructor(props){
@@ -63,7 +63,7 @@ export default class App extends Component {
               });
             }}
         >
-          <Favorites></Favorites>
+          <Search></Search>
         </TabBarIOS.Item>
       </TabBarIOS>
       )
