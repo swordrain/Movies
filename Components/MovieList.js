@@ -63,14 +63,18 @@ export default class MovieList extends Component {
 
 	render() {
 		var content;
-		if(this.state.dataSource.getRowCount() === 0){
-			return (<View style={styles.indicatorContainer}>
-				<ActivityIndicatorIOS size='large'/>
-			</View>);
+		if(this.state.dataSource.getRowCount() === 0 ){
+			if(!this.props.showNoLoading){
+				return (<View style={styles.indicatorContainer}>
+					<ActivityIndicatorIOS size='large'/>
+				</View>);
+			}else{ //没有data的时候显示空View，否则ListView的onEndReached会被触发
+				return <View></View>;
+			}
 		} else{
 			//content = 
-					
-				return (<ListView style={styles.listView}
+				//	不加enableEmptySections 会有警告
+				return (<ListView enableEmptySections={true} style={styles.listView}
 					dataSource={this.state.dataSource}
       				renderRow={this._renderRow.bind(this)}
       				onEndReached={this.props.loadMore}

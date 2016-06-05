@@ -7,9 +7,9 @@ import {
   StatusBar
 } from 'react-native';
 import Top250Nav from './Top250Nav';
-import InTheater from './InTheater';
-import Coming from './Coming';
-import Search from './Search';
+import InTheaterNav from './InTheaterNav';
+import ComingNav from './ComingNav';
+import SearchNav from './SearchNav';
 
 export default class App extends Component {
   constructor(props){
@@ -43,7 +43,7 @@ export default class App extends Component {
                 selectedTab: 'inTheater',
               });
             }}>
-          <InTheater></InTheater>
+          <InTheaterNav></InTheaterNav>
         </TabBarIOS.Item>
         <TabBarIOS.Item icon={require('../image/coming.png')} title="Coming"
           selected={this.state.selectedTab === 'coming'}
@@ -53,9 +53,9 @@ export default class App extends Component {
               });
             }}
         >
-          <Coming></Coming>
+          <ComingNav></ComingNav>
         </TabBarIOS.Item>
-        <TabBarIOS.Item systemIcon='favorites'
+        <TabBarIOS.Item systemIcon='search'
           selected={this.state.selectedTab === 'favorites'}
             onPress={() => {
               this.setState({
@@ -63,7 +63,7 @@ export default class App extends Component {
               });
             }}
         >
-          <Search></Search>
+          <SearchNav></SearchNav>
         </TabBarIOS.Item>
       </TabBarIOS>
       )
