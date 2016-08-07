@@ -18,7 +18,8 @@ export default class ComingList extends Component {
 		super(props);
 		this.state = {
 			coming: [],
-			total: 1
+			total: 1,
+			loadingMore: false
 		}
 	}
 
@@ -60,7 +61,7 @@ export default class ComingList extends Component {
 		
 		return (
 			<View style={{flex: 1}} >
-				<NavigationBar title={titleConfig('In Theater')} statusBar={statusBarConfig} tintColor='midnightblue'/>
+				<NavigationBar title={titleConfig('Coming')} statusBar={statusBarConfig} tintColor='midnightblue'/>
 				<MovieList loadMore={this._loadData.bind(this)} navigator={this.props.navigator} style={{flex: 1, justifyContent: 'center', alignItems: 'center',}} data={this.state.coming} />
 			</View>
 		)

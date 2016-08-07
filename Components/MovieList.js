@@ -60,6 +60,13 @@ export default class MovieList extends Component {
             });
         }
 	}
+	_renderFooter() {
+		if(this.props.isLoading){
+			return;
+		}else{
+			return <ActivityIndicatorIOS size='small'/>
+		}
+	}
 
 	render() {
 		var content;
@@ -79,6 +86,7 @@ export default class MovieList extends Component {
       				renderRow={this._renderRow.bind(this)}
       				onEndReached={this.props.loadMore}
       				onEndReachedThreshold={-20}
+      				renderFooter={this._renderFooter.bind(this)}
 				/>)
 		}
 	}
